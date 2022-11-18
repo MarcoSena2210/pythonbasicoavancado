@@ -1,0 +1,35 @@
+"""""
++,-,/,//,**/%,()
+
+"""
+
+print( "-" * 15 + " Multiplicação  *   " + "-" * 15)
+print("Multiplicação * ,10 * 10 => ",10*10)
+print("Repetição     * ,10 * A  => ",10*'A')  #Passa a ter a função de repetição, precisa ser o
+print()
+print( "-" * 15 + " Adição  +      " + "-" * 15)
+print("Adição        + ,10 + 10 => ",10+10)
+print("Adição concatenando + ,b + C => ", 'B' + 'C')
+print("Antonio" + " " + 'Barbosa tem ' + str(70) + " anos" + " # Existe forma mais amigavel de fazer isso ")
+print()
+print( "-" * 15 + " Subtração  -   " + "-" * 15)
+print("Subtração     * ,10 -  5 => ",10-5)
+print()
+print( "-" * 15 + " Divisão        " + "-" * 15)
+print("divisão mormal / ,10 /  3 => ", 10 / 3)
+print("divisão inteira no resultado //,10 //  3   => ", 10 // 3)
+print("divisão inteira no resultado //,10.5 //  3 => ", 10.5 // 3)
+print("divisão inteira no resultado //,10 // 3.3  => ", 10 // 3.3)
+print()
+print( "-" * 15 + " Potenciação ** " + "-" * 15)
+print("Potenciação 2 ** 10 => ",2 ** 10)
+print("Potenciação 2 ** 2  => ",2 ** 2)
+print()
+print( "-" * 15 + "    Resto     %  " + '-' * 15)
+print("Resto da Divisão % , 10 % 3 => ",10 % 3)
+print("Resto da Divisão % , 17 % 3 => ",17 % 3)
+print()
+print( "-" * 15 + "    Precedencia ()  " + '-' * 15)
+print("Sem Precedênca() , 5 +2 * 10 => ", 5 +2 * 10 )
+print("Precedênca , ((5 +2) * 10)   => ", ((5 +2) * 10 ) )
+
