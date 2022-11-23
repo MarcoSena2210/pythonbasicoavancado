@@ -1,0 +1,158 @@
+
+# Ambientes virtuais em Python (venv)
+# Um ambiente virtual carrega toda a sua instalação
+# do Python para uma pasta no caminho escolhido.
+# Ao ativar um ambiente virtual, a instalação do
+# ambiente virtual será usada.
+# venv é o módulo que vamos usar para
+# criar ambientes virtuais.
+# Você pode dar o nome que preferir para um
+# ambiente virtual, mas os mais comuns são:
+# venv env .venv .env
+
+
+#
+# Como criar ambientes virtuais
+# Abra a pasta do seu projeto no terminal
+# e digite:
+# python --version
+
+# PS C:\python\pythonbasicoavancado\projetos\projeto> gcm python -Syntax  #Para verificar o caminho do arquivo
+
+# python -m venv venv
+
+# DICA: Caso ocorra o erro abaixo 
+PS C:\python\pythonbasicoavancado\projetos> .\venv\Scripts\Activate.ps1    
+.\venv\Scripts\Activate.ps1 : O arquivo 
+C:\python\pythonbasicoavancado\projetos\venv\Scripts\Activate.ps1 não      
+pode ser carregado porque a execução de scripts foi desabilitada neste     
+sistema. Para obter mais informações, consulte about_Execution_Policies    
+em https://go.microsoft.com/fwlink/?LinkID=135170.
+No linha:1 caractere:1
++ .\venv\Scripts\Activate.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ErrodeSegurança: (:) [], PSSecurityExceptio  
+   n
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+O seguinte comando deve corrigir
+PS C:\python\pythonbasicoavancado\projetos> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+Alterando a política de execução de script do Windows PowerShell
+O cmdlet Set-ExecutionPolicy permite determinar quais scripts do Windows PowerShell (se houver) poderão ser 
+executados em seu computador. O Windows PowerShell tem quatro políticas de execução diferentes:
+
+Restrito - Nenhum script pode ser executado. O Windows PowerShell pode ser usado apenas no modo interativo.
+
+AllSigned - Somente scripts assinados por um editor confiável podem ser executados.
+
+RemoteSigned - Os scripts baixados devem ser assinados por um editor confiável antes de serem executados.
+
+Irrestrito - Sem restrições; todos os scripts do Windows PowerShell podem ser executados.
+
+Para atribuir uma política específica, basta chamar Set-ExecutionPolicy seguido do nome da política apropriada.
+Por exemplo, este comando define a política de execução como RemoteSigned:
+
+ Ativando e desativando meu ambiente virtual
+# Windows: .\venv\Scripts\activate
+# Linux e Mac: source venv/bin/activate
+
+# Desativar: deactivate
+
+
+ pip - instalando pacotes e bibliotecas
+# Instalar última versão:
+# pip install nome_pacote
+
+# Instalar versão precisa
+# (tem outras formas também não mencionadas)
+# pip install nome_pacote==0.0.0
+
+# Desinstalar pacote
+# pip uninstall nome_pacote
+
+# Lista os pacotes já instalados (ver pacotes)
+# pip freeze
+Exemplo: 
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> pip freeze
+PyMySQL==1.0.2
+
+É posivel verificar as versões disponíveis de um determinado pacote.
+pip index versions pymysql
+
+Exemplo:
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> pip index versions pymysql
+WARNING: pip index is currently an experimental command. It may be removed/changed in a future release without prior warning.
+pymysql (1.0.2)
+Available versions: 1.0.2, 1.0.1, 0.10.1, 0.10.0, 0.9.3, 0.9.2, 0.9.1, 0.9.0, 0.8.1, 0.8.0, 0.7.11, 0.7.10, 0.7.9, 0.7.8, 0.7.7, 0.7.6, 0.7.5, 0.7.4, 0.7.3, 0.7
+.2, 0.7.1, 0.7.0, 0.6.7, 0.6.6, 0.6.4, 0.6.3, 0.6.2, 0.6.1, 0.6, 0.5, 0.4, 0.3
+  INSTALLED: 1.0.2
+  LATEST:    1.0.2
+WARNING: You are using pip version 21.3.1; however, version 22.3.1 is available.
+You should consider upgrading via the 'C:\python\pythonbasicoavancado\projetos\projeto\venv\Scripts\python.exe -m pip install --upgrade pip' command.
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> 
+
+Dica:  Gerando um arquivo txt com a relação de todos pacotes instalados.Dessa forma evita que precisamos enviar a pasta venv com todos os pacotes 
+para o github.
+
+Pois é possível após clonar o repositório (sem a pasta venv) fazer a leitura do arquivo gravado ( requirements.txt) e reinstalar 
+todo o ambiente virtual.
+
+Para gravar em arquivo :
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> pip freeze > requirements.txt
+
+
+Supondo que estivessimo clonando o repositório e nele não existe a pasta venv (ambiente virtual)
+A solução: 
+1) Clonar o reposistório
+2) Criar o ambiente virtual (venv)
+3) Reinstalar os pacotes a partir da leitura do arquivo requirements.txt
+pip install -r  .\requirements.txt <enter>  
+
+Com isso, será instalado tudo que estiver listado no arquivo.  
+
+
+Usando o django:
+1) Instalar o django
+pip install django==2.2.3
+
+2)inicializando (criando) o projeto django
+
+Dica:  django-admin startproject <nome projeto> <o ponto é para ele não criar + dois de pastas>
+ django-admin startproject projeto .
+                    
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> django-admin startproject projeto .  
+
+Foi criada a pasta principal de nosso projeto chamada projeto e dentro dela 4 arquivos:
+projeto
+	__init__.py     # Informa ao python que é um pacote python
+	settings.py	# Tem todas configurações do projeto, nesse momento o + importante é install apps
+	urls.py		# 
+	wsgi.py		# Servidor web	
+
+apps aqui são seções do nosso site.		
+
+3) Iniciar um servidor local 
+python manage.py runserver
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> python manage.py runserver
+
+
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+4) Vamos criar um blog, para isso vamos usar o manage.py
+python manage.py startapp blog
+
+(venv) PS C:\python\pythonbasicoavancado\projetos\projeto> python manage.py startapp blog 
+Sera criado uma pasta na raiz do projeto chamada blog
+
+sempre que for criado apps (uma seção) precisamos registrar em dois locais.
+settings.py
+urls.py	
+   
+
+
+Nossa url de teste:
+http://127.0.0.1:8000/blog/    Ok funcionou corretamente. 
+
